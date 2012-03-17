@@ -8,8 +8,10 @@ module ActiveMerchant #:nodoc:
         base.cattr_accessor :signature
       end
       
-      API_VERSION = '59.0'
-      
+      # API_VERSION = '59.0'
+      API_VERSION = '61.0'
+      MOBILE_API_VERSION = '2.3'
+
       URLS = {
         :test => { :certificate => 'https://api.sandbox.paypal.com/2.0/',
                    :signature   => 'https://api-3t.sandbox.paypal.com/2.0/' },

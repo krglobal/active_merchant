@@ -241,6 +241,16 @@ module ActiveMerchant #:nodoc:
 
         message = message_from(response)
 
+        # ADDED
+        begin
+          # output params less but only last 4 of cc number
+          RAILS_DEFAULT_LOGGER.info "A.N. Post: " + post_data(action, parameters.merge(:cc_number => parameters[:cc_number].reverse[0,4].reverse)).split('&').join(', ')
+        rescue
+          RAILS_DEFAULT_LOGGER.info "**ERROR** A.N. Post: " + post_data(action, parameters).split('&').join(', ')
+        end
+        RAILS_DEFAULT_LOGGER.info "A.N. Response: " + response.to_s
+
+
         # Return the response. The authorization can be taken out of the transaction_id
         # Test Mode on/off is something we have to parse from the response text.
         # It usually looks something like this
